@@ -1,0 +1,9 @@
+littleMaidMob.mode.Carrier=仕分け人
+
+item.journal.name=仕訳帳
+
+aem.text.nowork=搬入出先が指定されていません
+aem.text.import=搬入
+aem.text.export=搬出
+aem.text.whitelist=許可リスト
+aem.text.blacklist=禁止リスト
