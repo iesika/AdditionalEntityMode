@@ -1,0 +1,22 @@
+itemGroup.AdditionalEntityMode=AdditinalEntityMode
+
+item.workbook_0.name=Workbook(Tier0)
+item.workbook_1.name=Workbook(Tier1)
+item.workbook_2.name=Workbook(Tier2)
+
+aem.text.nowork=No I/O specified
+aem.text.import=Import
+aem.text.export=Export
+aem.text.whitelist=Whitelist
+aem.text.blacklist=Blacklist
+
+aem.text.down=down
+aem.text.up=up
+aem.text.north=north
+aem.text.south=south
+aem.text.west=west
+aem.text.east=east
+aem.text.down=down
+
+aem.text.ignoreNBT=ignoreNBT
+aem.text.matchNBT=matchNBT
