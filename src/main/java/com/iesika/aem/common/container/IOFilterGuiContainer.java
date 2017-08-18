@@ -57,7 +57,7 @@ public class IOFilterGuiContainer extends GuiContainer {
 	    this.facing = mtb.facing;
 	    String s1 = StatCollector.translateToLocal(isImport ? "aem.text.import" : "aem.text.export");
 	    String s2 = StatCollector.translateToLocal(whitelist ? "aem.text.whitelist" : "aem.text.blacklist");
-	    String s3 = StatCollector.translateToLocal(matchNBT ? "aem.text.ignoreNBT" : "aem.text.matchNBT");
+	    String s3 = StatCollector.translateToLocal(matchNBT ?  "aem.text.matchNBT" : "aem.text.ignoreNBT");
 	    String s4 = StatCollector.translateToLocal(FacingUtil.getFacingString(facing));
 		this.buttonList.add(ioButton = new GuiButton(0, guiLeft + 5, guiTop + 20, 50, 20, s1));
 	    this.buttonList.add(wbButton = new GuiButton(1, guiLeft + 5, guiTop + 45, 50, 20, s2));
@@ -77,7 +77,7 @@ public class IOFilterGuiContainer extends GuiContainer {
 			wbButton.displayString = StatCollector.translateToLocal(whitelist ? "aem.text.whitelist" : "aem.text.blacklist");
 		}else if(pushedButton == nbtButton){
 			matchNBT = !matchNBT;
-			nbtButton.displayString = StatCollector.translateToLocal(matchNBT ? "aem.text.ignoreNBT" : "aem.text.matchNBT");
+			nbtButton.displayString = StatCollector.translateToLocal(matchNBT ?  "aem.text.matchNBT" : "aem.text.ignoreNBT");
 		}else if(pushedButton == facingButton){
 			facing++;
 			facing %= 6;
