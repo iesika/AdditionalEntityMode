@@ -17,13 +17,14 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "0.0.0"
-group= "com.iesika.ame" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+version = "0.0.1"
+group= "com.iesika.aem" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "AdditionalEntityMode"
 
 minecraft {
     version = "1.7.10-10.13.4.1558-1.7.10"
     runDir = "eclipse"
+    replace '${version}', project.version
 }
 
 dependencies {

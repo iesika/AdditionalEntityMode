@@ -1,9 +1,21 @@
 littleMaidMob.mode.Carrier=仕分け人
 
 item.journal.name=仕訳帳
+item.memo.name=メモ帳
 
 aem.text.nowork=搬入出先が指定されていません
 aem.text.import=搬入
 aem.text.export=搬出
 aem.text.whitelist=許可リスト
 aem.text.blacklist=禁止リスト
+
+aem.text.down=down
+aem.text.up=up
+aem.text.north=north
+aem.text.south=south
+aem.text.west=west
+aem.text.east=east
+aem.text.down=down
+
+aem.text.ignoreNBT=ignoreNBT
+aem.text.matchNBT=matchNBT

@@ -1,6 +1,7 @@
 littleMaidMob.mode.Carrier=Carrier
 
 item.journal.name=journal
+item.memo.name=memo
 
 aem.text.nowork=No I/O specified
 aem.text.import=Import

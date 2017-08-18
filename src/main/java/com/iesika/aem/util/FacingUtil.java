@@ -1,5 +1,7 @@
 package com.iesika.aem.util;
 
+import net.minecraftforge.common.util.ForgeDirection;
+
 public class FacingUtil {
 	public static String getFacingString(byte facing){
 //	    DOWN(0, 1, 0, -1, 0),
@@ -32,5 +34,9 @@ public class FacingUtil {
 				s = "aem.text.down";
 		}
 		return s;
+	}
+
+	public static ForgeDirection byteToForgeDirection(byte facing){
+		return ForgeDirection.getOrientation((int)facing);
 	}
 }

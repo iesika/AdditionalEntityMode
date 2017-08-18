@@ -1,5 +1,7 @@
 package com.iesika.aem;
 
+import java.io.File;
+
 import com.iesika.aem.common.AEMItems;
 import com.iesika.aem.common.config.AEMConfig;
 import com.iesika.aem.common.handler.GuiHandler;
@@ -25,11 +27,10 @@ public class AdditionalEntityMode
 {
     public static final String MODID = "aem";
     public static final String NAME = "AdditionalEntityMode";
-    public static final String VERSION = "1.0";
+    public static final String VERSION = "${version}";
 
     @Instance(MODID)
 	public static AdditionalEntityMode INSTANCE;
-
 
     @SidedProxy(clientSide = "com.iesika.aem.ClientProxy", serverSide = "com.iesika.aem.CommonProxy")
     public static CommonProxy proxy;
@@ -40,7 +41,7 @@ public class AdditionalEntityMode
 		Logger.info("preInit");
 		PacketHandler.init();
 		//config
-		(new AEMConfig()).config(new Configuration(event.getSuggestedConfigurationFile()));
+		(new AEMConfig()).config(new Configuration(new File(event.getModConfigurationDirectory(), NAME + ".cfg"), VERSION));
 		AEMItems.registryItems();
 	}
 

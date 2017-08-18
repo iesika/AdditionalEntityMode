@@ -11,6 +11,6 @@ public class PacketHandler {
 	public static final SimpleNetworkWrapper INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel(AdditionalEntityMode.MODID);
 
 	public static void init() {
-		INSTANCE.registerMessage(GuiMessageHandler.class, GuiMessage.class, 0, Side.SERVER);
+		INSTANCE.registerMessage(IOFilterMessageHandler.class, IOFIlterMessage.class, 0, Side.SERVER);
 	}
 }
