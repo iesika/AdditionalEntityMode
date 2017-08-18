@@ -1,0 +1,15 @@
+/release.bat
+/.gradle
+/.metadata
+/.settings
+/bin
+/build
+/eclipse
+/gradle
+/RemoteSystemsTempFiles
+/.classpath
+/.project
+/buildlog.txt
+/gradlew
+/gradlew.bat
+/install.bat

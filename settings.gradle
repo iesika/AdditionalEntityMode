@@ -1,0 +1,2 @@
+include ':LittleMaidMobX'
+project(':LittleMaidMobX').projectDir = new File(settingsDir, '../LittleMaidMobX')
