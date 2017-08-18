@@ -2,6 +2,8 @@ package com.iesika.aem.common.items;
 
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.iesika.aem.AdditionalEntityMode;
 import com.iesika.aem.common.handler.GuiHandler;
 import com.iesika.aem.util.tasks.MaidTaskBase;
@@ -41,10 +43,12 @@ public class Memo extends Item{
 			MaidTaskManager mtm = new MaidTaskManager(stack);
 			for (MaidTaskBase task : mtm.tasks){
 				List<String> tinfo = task.getToolTipInfo();
+				list.add(StringUtils.repeat("-", 40));
 				for (String line : tinfo){
 					list.add(line);
 				}
 			}
+			list.add(StringUtils.repeat("-", 40));
 			if (mtm.tasks.isEmpty()){
 				list.add("Empty");
 			}
