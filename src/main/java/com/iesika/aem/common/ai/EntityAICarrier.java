@@ -277,13 +277,4 @@ public class EntityAICarrier extends EntityAIBase {
 		return false;
 	}
 
-	//
-	// public void setJournalData(JournalData journalData) {
-	// cmode.journalData = journalData;
-	// Logger.info("set jd");
-	// if (cmode.journalData == null){
-	// Logger.info("WHYHYHYHY");
-	// }
-	// }
-
 }

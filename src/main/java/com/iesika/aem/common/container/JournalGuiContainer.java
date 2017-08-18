@@ -86,9 +86,6 @@ public class JournalGuiContainer extends GuiContainer {
 		data += isImport ? (byte)2 : (byte)0;
 		data += isWhitelist ? (byte)1 : (byte)0;
 		data += isIgnoreNBT ? (byte)4 : (byte)0;
-		/*
-		 * isimport isWhiteList
-		 * */
 
 		PacketHandler.INSTANCE.sendToServer(new GuiMessage(data, facing, point.x, point.y, point.z));
 		JournalData jd = new JournalData(ep.inventory.getCurrentItem());

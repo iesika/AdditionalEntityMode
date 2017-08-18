@@ -7,12 +7,10 @@ public class CraftFilterGuiContainer extends GuiContainer{
 
 	public CraftFilterGuiContainer(Container p_i1072_1_) {
 		super(p_i1072_1_);
-		// TODO 自動生成されたコンストラクター・スタブ
 	}
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int p_146976_2_, int p_146976_3_) {
-		// TODO 自動生成されたメソッド・スタブ
 
 	}
 }

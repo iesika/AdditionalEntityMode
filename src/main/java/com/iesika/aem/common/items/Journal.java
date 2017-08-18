@@ -25,7 +25,6 @@ import net.minecraft.world.World;
 public class Journal extends Item{
 
 	public Journal() {
-		// TODO 自動生成されたコンストラクター・スタブ
 		super();
 		setCreativeTab(CreativeTabs.tabMisc);
 		setUnlocalizedName("journal");

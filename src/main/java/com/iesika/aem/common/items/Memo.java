@@ -25,7 +25,6 @@ import net.minecraft.world.World;
 public class Memo extends Item{
 
 	public Memo() {
-		// TODO 自動生成されたコンストラクター・スタブ
 		super();
 		setCreativeTab(CreativeTabs.tabMisc);
 		setUnlocalizedName("memo");
