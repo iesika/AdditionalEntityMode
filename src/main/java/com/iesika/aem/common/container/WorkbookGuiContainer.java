@@ -69,10 +69,10 @@ public class WorkbookGuiContainer extends GuiContainer {
 		isWhitelist = mtb.isWhitelist;
 		ignoreNBT = mtb.ignoreNBT;
 		facing = mtb.facing;
-		this.buttonList.add(ioButton = new GuiButton(0, guiLeft + 5, guiTop + 20, 50, 20, I18n.format(isImport ? "aem.text.import" : "aem.text.export")));
-		this.buttonList.add(wbButton = new GuiButton(1, guiLeft + 5, guiTop + 45, 50, 20, I18n.format(isWhitelist ? "aem.text.whitelist" : "aem.text.blacklist")));
-		this.buttonList.add(nbtButton = new GuiButton(2, guiLeft + 120, guiTop + 20, 50, 20, I18n.format(ignoreNBT ? "aem.text.ignoreNBT" : "aem.text.matchNBT")));
-		this.buttonList.add(facingButton = new GuiButton(3, guiLeft + 120, guiTop + 45, 50, 20, I18n.format(FacingUtil.getFacingString(facing))));
+		this.buttonList.add(ioButton = new GuiButton(0, guiLeft + 3, guiTop + 20, 54, 20, I18n.format(isImport ? "aem.text.import" : "aem.text.export")));
+		this.buttonList.add(wbButton = new GuiButton(1, guiLeft + 3, guiTop + 45, 54, 20, I18n.format(isWhitelist ? "aem.text.whitelist" : "aem.text.blacklist")));
+		this.buttonList.add(nbtButton = new GuiButton(2, guiLeft + 118, guiTop + 20, 54, 20, I18n.format(ignoreNBT ? "aem.text.ignoreNBT" : "aem.text.matchNBT")));
+		this.buttonList.add(facingButton = new GuiButton(3, guiLeft + 118, guiTop + 45, 54, 20, I18n.format(FacingUtil.getFacingString(facing))));
 	}
 
 	@Override
