@@ -3,8 +3,10 @@ package com.iesika.aem.common.inventory;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.iesika.aem.common.handler.GuiHandler;
 import com.iesika.aem.common.tasks.MaidTaskItemIO;
 import com.iesika.aem.common.tasks.MaidTaskManager;
+import com.iesika.aem.util.Logger;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -19,10 +21,24 @@ public class WorkbookFilterInventory implements IInventory {
 	private ItemStack[] filters;
 	private BlockPos pos;
 
-	public WorkbookFilterInventory(InventoryPlayer inventoryPlayer, int x, int y, int z) {
+	public WorkbookFilterInventory(InventoryPlayer inventoryPlayer, int x, int y, int z, int guiID) {
 		this.filters = new ItemStack[9];
 		this.inventoryPlayer = inventoryPlayer;
 		this.pos = new BlockPos(x, y, z);
+	}
+
+	public int getInventorySizeFromGuiID(int guiID) {
+		switch (guiID) {
+		case GuiHandler.AEM_WORKBOOK_TIER0_GUI_ID:
+			return 1;
+		case GuiHandler.AEM_WORKBOOK_TIER1_GUI_ID:
+			return 5;
+		case GuiHandler.AEM_WORKBOOK_TIER2_GUI_ID:
+			return 9;
+		default:
+			Logger.info("incorrect guiID : WorkbookFilterInventory");
+			return 1;
+		}
 	}
 
 	@Override

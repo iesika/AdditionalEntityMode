@@ -1,5 +1,6 @@
 package com.iesika.aem.common.container;
 
+import com.iesika.aem.common.handler.GuiHandler;
 import com.iesika.aem.common.inventory.SlotWorkbook;
 import com.iesika.aem.common.inventory.WorkbookFilterInventory;
 
@@ -13,16 +14,23 @@ public class WorkbookContainer extends Container {
 	private WorkbookFilterInventory filterInventory;
 	private ItemStack workbook;
 
-	public WorkbookContainer(int x, int y, int z, EntityPlayer entityPlayer, int GUIID) {
-		filterInventory = new WorkbookFilterInventory(entityPlayer.inventory, x, y, z);
+	public WorkbookContainer(int x, int y, int z, EntityPlayer entityPlayer, int guiID) {
+		filterInventory = new WorkbookFilterInventory(entityPlayer.inventory, x, y, z, guiID);
 		this.workbook = entityPlayer.inventory.getCurrentItem();
 		filterInventory.openInventory(entityPlayer);
 
 		for (int i = 0; i < 3; ++i) {
 			for (int j = 0; j < 3; ++j) {
-				this.addSlotToContainer(new SlotWorkbook(filterInventory, j + i * 3, 62 + j * 18, 17 + i * 18));
+				if (guiID == GuiHandler.AEM_WORKBOOK_TIER2_GUI_ID){
+					this.addSlotToContainer(new SlotWorkbook(filterInventory, j + i * 3, 62 + j * 18, 17 + i * 18));
+				}else if (guiID == GuiHandler.AEM_WORKBOOK_TIER1_GUI_ID && (i == 1 || j == 1) ){
+					this.addSlotToContainer(new SlotWorkbook(filterInventory, j + i * 3, 62 + j * 18, 17 + i * 18));
+				}else if(guiID == GuiHandler.AEM_WORKBOOK_TIER0_GUI_ID && (i == 1 && j == 1)){
+
+				}
 			}
 		}
+
 		//dispenserのソースより
 		for (int i = 0; i < 3; ++i) {
 			for (int j = 0; j < 9; ++j) {
@@ -41,8 +49,8 @@ public class WorkbookContainer extends Container {
 	}
 
 	@Override
-	protected Slot addSlotToContainer(Slot p_75146_1_) {
-		return super.addSlotToContainer(p_75146_1_);
+	protected Slot addSlotToContainer(Slot slot) {
+		return super.addSlotToContainer(slot);
 	}
 
 	@Override

@@ -14,17 +14,17 @@ public class GuiHandler implements IGuiHandler {
 	public static final int AEM_WORKBOOK_TIER2_GUI_ID = 2;
 
 	@Override
-	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		if (ID == AEM_WORKBOOK_TIER0_GUI_ID || ID == AEM_WORKBOOK_TIER1_GUI_ID || ID == AEM_WORKBOOK_TIER2_GUI_ID){
-			return new WorkbookContainer(x, y, z, player, ID);
+	public Object getServerGuiElement(int guiID, EntityPlayer player, World world, int x, int y, int z) {
+		if (guiID == AEM_WORKBOOK_TIER0_GUI_ID || guiID == AEM_WORKBOOK_TIER1_GUI_ID || guiID == AEM_WORKBOOK_TIER2_GUI_ID){
+			return new WorkbookContainer(x, y, z, player, guiID);
 		}
 		return null;
 	}
 
 	@Override
-	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		if (ID == AEM_WORKBOOK_TIER0_GUI_ID || ID == AEM_WORKBOOK_TIER1_GUI_ID || ID == AEM_WORKBOOK_TIER2_GUI_ID){
-			return new WorkbookGuiContainer(x, y, z, player, ID);
+	public Object getClientGuiElement(int guiID, EntityPlayer player, World world, int x, int y, int z) {
+		if (guiID == AEM_WORKBOOK_TIER0_GUI_ID || guiID == AEM_WORKBOOK_TIER1_GUI_ID || guiID == AEM_WORKBOOK_TIER2_GUI_ID){
+			return new WorkbookGuiContainer(x, y, z, player, guiID);
 		}
 		return null;
 	}
