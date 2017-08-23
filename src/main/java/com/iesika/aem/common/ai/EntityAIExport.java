@@ -9,7 +9,6 @@ import com.iesika.aem.util.InventoryUtil;
 import net.blacklab.lmr.entity.EntityLittleMaid;
 import net.blacklab.lmr.entity.mode.EntityModeBase;
 import net.blacklab.lmr.util.EnumSound;
-import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
@@ -31,7 +30,6 @@ public class EntityAIExport extends EntityAIBase {
 		this.owner = owner;
 		this.opinv = false;
 		this.cflag = true;
-		owner.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(50);
 		setMutexBits(7);
 	}
 

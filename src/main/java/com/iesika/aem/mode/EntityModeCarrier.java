@@ -20,7 +20,6 @@ public class EntityModeCarrier extends EntityModeBase {
 	public static final int mmode_Carrier = 0x4201;
 	public static final String CarrierModeName = "Carrier";
 
-	public boolean useMainHand;
 	public MaidTaskManager maidTaskManager;
 
 	static {
@@ -29,7 +28,6 @@ public class EntityModeCarrier extends EntityModeBase {
 
 	public EntityModeCarrier(EntityLittleMaid maid) {
 		super(maid);
-		this.useMainHand = true;
 	}
 
 	@Override
@@ -39,22 +37,11 @@ public class EntityModeCarrier extends EntityModeBase {
 
 	@Override
 	public boolean changeMode(EntityPlayer pentityplayer) {
-		//メインハンド優先
 		ItemStack mainHand = owner.maidInventory.mainHandInventory[0];
-		if (mainHand != null) {
-			if (mainHand.getItem() == AEMItems.workbook) {
+		if (mainHand != null){
+			if (shouldChangeToCarrierMode(mainHand)){
 				owner.setMaidMode(CarrierModeName);
-				useMainHand = true;
 				Logger.info("maid mode -> Carrier (use main hand)");
-				return true;
-			}
-		}
-		ItemStack offHand = owner.maidInventory.offHandInventory[0];
-		if (offHand != null) {
-			if (offHand.getItem() == AEMItems.workbook) {
-				owner.setMaidMode(CarrierModeName);
-				useMainHand = false;
-				Logger.info("maid mode -> Carrier (use off hand)");
 				return true;
 			}
 		}
@@ -85,7 +72,7 @@ public class EntityModeCarrier extends EntityModeBase {
 		switch (pMode) {
 		case mmode_Carrier:
 			owner.setBloodsuck(false);
-			return shouldChangeToCarrierMode(useMainHand ? owner.maidInventory.mainHandInventory[0] : owner.maidInventory.offHandInventory[0]);
+			return shouldChangeToCarrierMode(owner.maidInventory.mainHandInventory[0]);
 		}
 		return false;
 	}
