@@ -1,0 +1,4 @@
+include ':EBLib'
+project(':EBLib').projectDir = new File(settingsDir, '../EBLib')
+include ':LittleMaidReengaged'
+project(':LittleMaidReengaged').projectDir = new File(settingsDir, '../LittleMaidReengaged')
