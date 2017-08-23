@@ -95,7 +95,9 @@ public class MaidTaskItemIO extends MaidTaskBase {
 		String sNBT = ignoreNBT ? ChatFormatting.WHITE + ign : ChatFormatting.DARK_GRAY + man;
 		String face = ChatFormatting.WHITE +I18n.format(FacingUtil.getFacingString(facing));
 
-		tlist.add(io + " " + pos + " " + wb + " " + sNBT + " " + face);
+		String iti = "( " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " ) ";
+
+		tlist.add(iti + io + " " + wb + " " + sNBT + " " + face);
 		if (filter.isEmpty()) {
 			String sss = isImport ? "Import" : "Export";
 			tlist.add(ChatFormatting.GRAY + sss +" all items");
