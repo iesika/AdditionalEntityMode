@@ -1,4 +1,4 @@
-package com.iesika.aem.util;
+package com.iesika.aem.common.nbt;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.iesika.aem.common.AEMItems;
+import com.iesika.aem.util.Logger;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -14,7 +15,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.util.Constants;
 
-public class WorkbookHelper {
+public class WorkbookNBTLoader {
 
 	public List<Node> nodeList;
 	public Map<BlockPos, Node> importMap;
@@ -50,7 +51,7 @@ public class WorkbookHelper {
 		}
 	}
 
-	public WorkbookHelper(ItemStack itemStack) {
+	public WorkbookNBTLoader(ItemStack itemStack) {
 		this.nodeList = new ArrayList<Node>();
 		this.importMap = new HashMap<BlockPos, Node>();
 		this.exportMap = new HashMap<BlockPos, Node>();
