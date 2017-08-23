@@ -33,11 +33,11 @@ public class MaidTaskItemIO extends MaidTaskBase {
 		this.filter = new HashMap<Byte, ItemStack>();
 	}
 
-	public MaidTaskItemIO(BlockPos pos, boolean isImport, boolean whitelist, boolean matchNBT, EnumFacing facing, Map<Byte, ItemStack> filter) {
+	public MaidTaskItemIO(BlockPos pos, boolean isImport, boolean whitelist, boolean ignoreNBT, EnumFacing facing, Map<Byte, ItemStack> filter) {
 		super("itemIO", pos);
 		this.isImport = isImport;
 		this.isWhitelist = whitelist;
-		this.ignoreNBT = matchNBT;
+		this.ignoreNBT = ignoreNBT;
 		this.facing = facing;
 		this.filter = filter;
 	}
@@ -92,7 +92,7 @@ public class MaidTaskItemIO extends MaidTaskBase {
 
 		String io = isImport ? ChatFormatting.WHITE + im : ChatFormatting.DARK_GRAY + ex;
 		String wb = isWhitelist ? ChatFormatting.WHITE + whl : ChatFormatting.DARK_GRAY + bll;
-		String sNBT = ignoreNBT ? ChatFormatting.WHITE + man : ChatFormatting.DARK_GRAY + ign;
+		String sNBT = ignoreNBT ? ChatFormatting.WHITE + ign : ChatFormatting.DARK_GRAY + man;
 		String face = ChatFormatting.WHITE +I18n.format(FacingUtil.getFacingString(facing));
 
 		tlist.add(io + " " + pos + " " + wb + " " + sNBT + " " + face);
