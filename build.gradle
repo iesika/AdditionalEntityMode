@@ -12,7 +12,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 
 version = "1.0.0"
 group= "com.iesika.aem"
-archivesBaseName = "aem"
+archivesBaseName = "AdditionalEntityMode"
 
 sourceCompatibility = targetCompatibility = "1.8"
 compileJava {
@@ -23,6 +23,8 @@ minecraft {
     version = "1.10.2-12.18.3.2422"
     runDir = "run"
     mappings = "snapshot_20161111"
+
+    replace "@VERSION@", project.version
 }
 
 dependencies {
@@ -41,6 +43,7 @@ processResources{
         
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
+        //@VERSION@
     }
 }
 
