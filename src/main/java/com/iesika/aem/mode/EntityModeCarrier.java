@@ -1,5 +1,6 @@
 package com.iesika.aem.mode;
 
+import com.iesika.aem.common.AEMConfig;
 import com.iesika.aem.common.AEMItems;
 import com.iesika.aem.common.ai.EntityAIExport;
 import com.iesika.aem.common.ai.EntityAIImport;
@@ -9,6 +10,7 @@ import com.iesika.aem.util.Logger;
 import net.blacklab.lmr.entity.EntityLittleMaid;
 import net.blacklab.lmr.entity.mode.EntityModeBase;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAITasks;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
@@ -40,6 +42,12 @@ public class EntityModeCarrier extends EntityModeBase {
 		ItemStack mainHand = owner.maidInventory.mainHandInventory[0];
 		if (mainHand != null){
 			if (shouldChangeToCarrierMode(mainHand)){
+				double pre = owner.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).getBaseValue();
+				double now = (double)AEMConfig.maidPathFindingRange;
+				if (pre != now){
+					owner.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(now);
+					Logger.info("maid path finding range increased : " + pre + " -> " + now);
+				}
 				owner.setMaidMode(CarrierModeName);
 				Logger.info("maid mode -> Carrier (use main hand)");
 				return true;
