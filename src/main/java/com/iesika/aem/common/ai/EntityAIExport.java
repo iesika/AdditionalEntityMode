@@ -16,6 +16,7 @@ import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 
+//インベントリ側からメイド側にアイテムを移すAI
 public class EntityAIExport extends EntityAIBase {
 
 	private EntityLittleMaid owner;

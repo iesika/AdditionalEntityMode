@@ -16,11 +16,12 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 
+//メイド側からインベントリにアイテムを移すAI
 public class EntityAIImport extends EntityAIBase {
 
 	private EntityLittleMaid owner;
 	protected EntityModeCarrier cmode;
-	protected List<MaidTaskItemIO> exporList;
+	protected List<MaidTaskItemIO> importList;
 	protected MaidTaskItemIO ptask;// 処理中のタスク
 
 	private boolean opinv;
@@ -43,8 +44,8 @@ public class EntityAIImport extends EntityAIBase {
 		if (fmodeBase instanceof EntityModeCarrier) {
 			cmode = (EntityModeCarrier) fmodeBase;
 			if (cmode.maidTaskManager != null) {
-				exporList = cmode.maidTaskManager.getIOList(true);
-				if (!exporList.isEmpty() && existImportableTask()) {
+				importList = cmode.maidTaskManager.getIOList(true);
+				if (!importList.isEmpty() && existImportableTask()) {
 					return true;
 				}
 			}
@@ -96,7 +97,7 @@ public class EntityAIImport extends EntityAIBase {
 				}
 			}
 		} else {
-			for (MaidTaskItemIO mtio : exporList) {
+			for (MaidTaskItemIO mtio : importList) {
 				if (importItemStack(mtio, true)) {
 					double x = (double)mtio.pos.getX() + 0.5d;
 					double y = (double)mtio.pos.getY() + 0.5d;
@@ -130,7 +131,7 @@ public class EntityAIImport extends EntityAIBase {
 	}
 
 	private boolean existImportableTask() {
-		for (MaidTaskItemIO mtio : exporList) {
+		for (MaidTaskItemIO mtio : importList) {
 			if (importItemStack(mtio, true)) {
 				return true;
 			}
@@ -178,7 +179,7 @@ public class EntityAIImport extends EntityAIBase {
 		}
 		for (ItemStack filter : mtio.filter.values()) {
 			if (filter != null && filter.isItemEqual(is)) {
-				if (!matchNBT || (!matchNBT & ItemStack.areItemStackTagsEqual(filter, is))) {
+				if (!matchNBT || (matchNBT & ItemStack.areItemStackTagsEqual(filter, is))) {
 					// ホワイトリストなら一致したので搬出許可確定
 					// ブラックリストなら一致したので搬出不許可確定
 					isValidItem = isWhitelist;
@@ -187,7 +188,7 @@ public class EntityAIImport extends EntityAIBase {
 			}
 		}
 		if (isValidItem) {
-			// メイドインベントリにisを受け入れられるスペースがあれば移動する
+			// インベントリにisを受け入れられるスペースがあれば移動する
 			int left = InventoryUtil.insertIntoInventory(is.copy(), targetInventory, mtio.facing, sim);
 			if (is.stackSize == left) {
 				return false;
