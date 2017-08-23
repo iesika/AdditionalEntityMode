@@ -2,6 +2,8 @@ package com.iesika.aem.common.items;
 
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.iesika.aem.AdditionalEntityMode;
 import com.iesika.aem.common.handler.GuiHandler;
 import com.iesika.aem.common.tasks.MaidTaskBase;
@@ -68,28 +70,14 @@ public class Workbook extends Item {
 			list.add(I18n.format("aem.text.nowork"));
 		} else {
 			MaidTaskManager mtm = new MaidTaskManager(itemStack);
+			list.add(StringUtils.repeat("-", 50));
 			for (MaidTaskBase task : mtm.tasks){
 				List<String> tinfo = task.getToolTipInfo();
 				for (String line : tinfo){
 					list.add(line);
 				}
+				list.add(StringUtils.repeat("-", 50));
 			}
-//			WorkbookHelper wh = new WorkbookHelper(itemStack);
-//			for (WorkbookHelper.Node node : wh.nodeList) {
-//				String spos = "x:" + Integer.toString(node.pos.getX()) + " y:" + Integer.toString(node.pos.getY()) + " z:" + Integer.toString(node.pos.getZ());
-//				String sio = node.isImport ? ChatFormatting.WHITE + I18n.format("aem.text.import") : ChatFormatting.DARK_GRAY + I18n.format("aem.text.export");
-//				String swb = node.isWhitelist ? ChatFormatting.WHITE + I18n.format("aem.text.whitelist") : ChatFormatting.DARK_GRAY + I18n.format("aem.text.blacklist");
-//				String sNBT = node.ignoreNBT ? ChatFormatting.WHITE + I18n.format("aem.text.ignoreNBT") : ChatFormatting.DARK_GRAY + I18n.format("aem.text.matchNBT");
-//				String sface = ChatFormatting.WHITE + I18n.format(FacingUtil.getFacingString(node.facing));
-//				list.add(ChatFormatting.UNDERLINE + sio + " " + spos + " " + swb + " " + sNBT + " " + sface);
-//				if (node.items.size() == 0 && !node.isWhitelist) {
-//					list.add(ChatFormatting.GRAY + (node.isImport ? "Import" : "Export") + " all items");
-//				} else {
-//					for (ItemStack is : node.items.values()) {
-//						list.add(ChatFormatting.GRAY + is.getDisplayName());
-//					}
-//				}
-//			}
 		}
 	}
 
