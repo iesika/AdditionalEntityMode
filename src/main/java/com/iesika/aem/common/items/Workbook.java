@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 
 import com.iesika.aem.AdditionalEntityMode;
+import com.iesika.aem.common.AEMConfig;
 import com.iesika.aem.common.handler.GuiHandler;
 import com.iesika.aem.common.tasks.MaidTaskBase;
 import com.iesika.aem.common.tasks.MaidTaskManager;
@@ -25,6 +26,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -66,6 +68,9 @@ public class Workbook extends Item {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean advanced) {
+		int current = getNumberOfItemIOPoint(itemStack);
+		int max = getMaxNunmberOfItemIOPoint(itemStack);
+		list.add(I18n.format("aem.text.registered") + " " + current + " / " + max);
 		if (!itemStack.hasTagCompound() || !itemStack.getTagCompound().hasKey("maidtasks")) {
 			list.add(I18n.format("aem.text.nowork"));
 		} else {
@@ -104,8 +109,16 @@ public class Workbook extends Item {
 		}
 		TileEntity tile = worldIn.getTileEntity(pos);
 		if (tile != null && tile instanceof IInventory) {
-			playerIn.openGui(AdditionalEntityMode.INSTANCE, meta2GUIID(stack.getMetadata()), worldIn, pos.getX(), pos.getY(), pos.getZ());
-			return EnumActionResult.SUCCESS;
+			int current = getNumberOfItemIOPoint(stack);
+			int max = getMaxNunmberOfItemIOPoint(stack);
+			if (max > current){
+				playerIn.openGui(AdditionalEntityMode.INSTANCE, meta2GUIID(stack.getMetadata()), worldIn, pos.getX(), pos.getY(), pos.getZ());
+				return EnumActionResult.SUCCESS;
+			}else{
+				if (!worldIn.isRemote){
+					playerIn.addChatMessage(new TextComponentTranslation("aem.text.cantregister"));
+				}
+			}
 		}
 		return EnumActionResult.FAIL;
 	}
@@ -122,4 +135,19 @@ public class Workbook extends Item {
 		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
 	}
 
+	private int getNumberOfItemIOPoint(ItemStack workbook){
+		return (new MaidTaskManager(workbook)).getNumberOfItemIOtask();
+	}
+
+	private int getMaxNunmberOfItemIOPoint(ItemStack workbook){
+		int max = 2;
+		if (workbook.getMetadata() == 0) {
+			max = AEMConfig.workbookTier0NodeSize;
+		} else if (workbook.getMetadata() == 1) {
+			max = AEMConfig.workbookTier1NodeSize;
+		} else if (workbook.getMetadata() == 2) {
+			max = AEMConfig.workbookTier2NodeSize;
+		}
+		return max;
+	}
 }

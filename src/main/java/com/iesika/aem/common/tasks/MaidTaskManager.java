@@ -39,6 +39,7 @@ public class MaidTaskManager {
 		}
 	}
 
+	//引数のworkboookのNBTに書き込む
 	public void writeToNBT(ItemStack itemStack){
 		if (itemStack.getItem() != AEMItems.workbook){
 			return;
@@ -87,5 +88,15 @@ public class MaidTaskManager {
 			}
 		}
 		return iotasks;
+	}
+
+	public int getNumberOfItemIOtask(){
+		int count = 0;
+		for (MaidTaskBase mtb : tasks){
+			if (mtb instanceof MaidTaskItemIO){
+				count++;
+			}
+		}
+		return count;
 	}
 }

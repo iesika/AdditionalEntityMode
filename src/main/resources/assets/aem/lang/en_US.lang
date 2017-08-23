@@ -5,6 +5,8 @@ item.workbook_1.name=Workbook(Tier1)
 item.workbook_2.name=Workbook(Tier2)
 
 aem.text.nowork=No I/O specified
+aem.text.registered=registered
+aem.text.cantregister=This workbook can not be recorded any more.
 aem.text.import=Import
 aem.text.export=Export
 aem.text.whitelist=Whitelist
