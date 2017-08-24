@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.iesika.aem.common.AEMItems;
 import com.iesika.aem.common.tasks.MaidTaskItemIO;
-import com.iesika.aem.mode.EntityModeCarrier;
+import com.iesika.aem.mode.EntityModeItemCarrier;
 import com.iesika.aem.util.InventoryUtil;
 
 import net.blacklab.lmr.entity.EntityLittleMaid;
@@ -19,7 +19,7 @@ import net.minecraft.tileentity.TileEntity;
 public class EntityAIImport extends EntityAIBase {
 
 	private EntityLittleMaid owner;
-	protected EntityModeCarrier cmode;
+	protected EntityModeItemCarrier cmode;
 	protected List<MaidTaskItemIO> importList;
 	protected MaidTaskItemIO ptask;// 処理中のタスク
 
@@ -39,8 +39,8 @@ public class EntityAIImport extends EntityAIBase {
 			return false;
 		}
 		EntityModeBase fmodeBase = owner.getActiveModeClass();
-		if (fmodeBase instanceof EntityModeCarrier) {
-			cmode = (EntityModeCarrier) fmodeBase;
+		if (fmodeBase instanceof EntityModeItemCarrier) {
+			cmode = (EntityModeItemCarrier) fmodeBase;
 			if (cmode.maidTaskManager != null) {
 				importList = cmode.maidTaskManager.getIOList(true);
 				if (!importList.isEmpty() && existImportableTask()) {

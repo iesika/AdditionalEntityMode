@@ -17,18 +17,18 @@ import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 
-public class EntityModeCarrier extends EntityModeBase {
+public class EntityModeItemCarrier extends EntityModeBase {
 
-	public static final int mmode_Carrier = 0x4201;
-	public static final String CarrierModeName = "Carrier";
+	public static final int mmode_ItemCarrier = 0x4201;
+	public static final String ItemCarrierModeName = "ItemCarrier";
 
 	public MaidTaskManager maidTaskManager;
 
 	static {
-		Logger.info("EntityModeCarrier Init");
+		Logger.info("EntityModeItemCarrier Init");
 	}
 
-	public EntityModeCarrier(EntityLittleMaid maid) {
+	public EntityModeItemCarrier(EntityLittleMaid maid) {
 		super(maid);
 	}
 
@@ -48,7 +48,7 @@ public class EntityModeCarrier extends EntityModeBase {
 					owner.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(now);
 					Logger.info("maid path finding range increased : " + pre + " -> " + now);
 				}
-				owner.setMaidMode(CarrierModeName);
+				owner.setMaidMode(ItemCarrierModeName);
 				Logger.info("maid mode -> Carrier (use main hand)");
 				return true;
 			}
@@ -72,13 +72,13 @@ public class EntityModeCarrier extends EntityModeBase {
 		//首の動き
 		ltasks[0].addTask(51, new EntityAIWatchClosest(owner, EntityLivingBase.class, 10F));
 		ltasks[0].addTask(52, new EntityAILookIdle(owner));
-		owner.addMaidMode(ltasks, CarrierModeName, mmode_Carrier);
+		owner.addMaidMode(ltasks, ItemCarrierModeName, mmode_ItemCarrier);
 	}
 
 	@Override
 	public boolean setMode(int pMode) {
 		switch (pMode) {
-		case mmode_Carrier:
+		case mmode_ItemCarrier:
 			owner.setBloodsuck(false);
 			return shouldChangeToCarrierMode(owner.maidInventory.mainHandInventory[0]);
 		}
