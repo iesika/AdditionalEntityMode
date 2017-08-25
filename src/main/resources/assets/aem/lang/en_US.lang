@@ -23,4 +23,5 @@ aem.text.down=down
 aem.text.ignoreNBT=ignoreNBT
 aem.text.matchNBT=matchNBT
 
+littleMaidMob.mode.F-ItemCarrier=ItemCarrier(Free)
 littleMaidMob.mode.ItemCarrier=ItemCarrier
