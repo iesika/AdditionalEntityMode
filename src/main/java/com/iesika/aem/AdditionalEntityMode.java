@@ -5,6 +5,7 @@ import java.io.File;
 import com.iesika.aem.common.AEMConfig;
 import com.iesika.aem.common.AEMCreativeTab;
 import com.iesika.aem.common.AEMItems;
+import com.iesika.aem.common.AEMRecipes;
 import com.iesika.aem.common.CommonProxy;
 import com.iesika.aem.common.handler.GuiHandler;
 import com.iesika.aem.common.handler.PacketHandler;
@@ -54,6 +55,7 @@ public class AdditionalEntityMode {
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		Logger.info("AEM Init");
+		AEMRecipes.registeryRecipes();
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 	}
 
