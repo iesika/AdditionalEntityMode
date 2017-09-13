@@ -25,3 +25,4 @@ run
 /gradle/
 gradlew
 gradle.properties
+buildlog.txt
