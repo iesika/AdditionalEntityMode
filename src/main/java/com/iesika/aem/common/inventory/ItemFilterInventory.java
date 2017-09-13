@@ -15,13 +15,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 
-public class WorkbookFilterInventory implements IInventory {
+public class ItemFilterInventory implements IInventory {
 
 	private InventoryPlayer inventoryPlayer;
 	private ItemStack[] filters;
 	private BlockPos pos;
 
-	public WorkbookFilterInventory(InventoryPlayer inventoryPlayer, int x, int y, int z, int guiID) {
+	public ItemFilterInventory(InventoryPlayer inventoryPlayer, int x, int y, int z, int guiID) {
 		this.filters = new ItemStack[9];
 		this.inventoryPlayer = inventoryPlayer;
 		this.pos = new BlockPos(x, y, z);

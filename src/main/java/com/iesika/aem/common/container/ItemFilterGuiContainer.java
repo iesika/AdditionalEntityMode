@@ -3,7 +3,7 @@ package com.iesika.aem.common.container;
 import java.io.IOException;
 
 import com.iesika.aem.common.handler.GuiHandler;
-import com.iesika.aem.common.handler.GuiWorkbookMessage;
+import com.iesika.aem.common.handler.GuiItemFilterMessage;
 import com.iesika.aem.common.handler.PacketHandler;
 import com.iesika.aem.common.tasks.MaidTaskItemIO;
 import com.iesika.aem.common.tasks.MaidTaskManager;
@@ -20,7 +20,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 
-public class WorkbookGuiContainer extends GuiContainer {
+public class ItemFilterGuiContainer extends GuiContainer {
 
 	private static final ResourceLocation TEXTURE_TIER0 = new ResourceLocation("aem", "textures/gui/workbook_tier0.png");
 	private static final ResourceLocation TEXTURE_TIER1 = new ResourceLocation("aem", "textures/gui/workbook_tier1.png");
@@ -37,8 +37,8 @@ public class WorkbookGuiContainer extends GuiContainer {
 	private BlockPos pos;
 	private int GUIID;
 
-	public WorkbookGuiContainer(int x, int y, int z, EntityPlayer entityPlayer, int GUIID) {
-		super(new WorkbookContainer(x, y, z, entityPlayer, GUIID));
+	public ItemFilterGuiContainer(int x, int y, int z, EntityPlayer entityPlayer, int GUIID) {
+		super(new ItemFilterContainer(x, y, z, entityPlayer, GUIID));
 		this.entityPlayer = entityPlayer;
 		this.pos = new BlockPos(x, y, z);
 		this.GUIID = GUIID;
@@ -92,7 +92,7 @@ public class WorkbookGuiContainer extends GuiContainer {
 			facing = FacingUtil.getNextFacing(facing);
 			facingButton.displayString = I18n.format(FacingUtil.getFacingString(facing));
 		}
-		PacketHandler.INSTANCE.sendToServer(new GuiWorkbookMessage(isImport, isWhitelist, ignoreNBT, facing.ordinal(), pos.getX(), pos.getY(), pos.getZ()));
+		PacketHandler.INSTANCE.sendToServer(new GuiItemFilterMessage(isImport, isWhitelist, ignoreNBT, facing.ordinal(), pos.getX(), pos.getY(), pos.getZ()));
 		MaidTaskManager mtm = new MaidTaskManager(entityPlayer.inventory.getCurrentItem());
 		MaidTaskItemIO mtb = (MaidTaskItemIO) mtm.getRegisteredTaskFromBlockPos(pos);
 		mtb.isImport = isImport;

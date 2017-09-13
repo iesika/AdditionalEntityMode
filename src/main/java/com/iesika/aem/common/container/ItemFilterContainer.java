@@ -2,20 +2,20 @@ package com.iesika.aem.common.container;
 
 import com.iesika.aem.common.handler.GuiHandler;
 import com.iesika.aem.common.inventory.SlotWorkbook;
-import com.iesika.aem.common.inventory.WorkbookFilterInventory;
+import com.iesika.aem.common.inventory.ItemFilterInventory;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-public class WorkbookContainer extends Container {
+public class ItemFilterContainer extends Container {
 
-	private WorkbookFilterInventory filterInventory;
+	private ItemFilterInventory filterInventory;
 	private ItemStack workbook;
 
-	public WorkbookContainer(int x, int y, int z, EntityPlayer entityPlayer, int guiID) {
-		filterInventory = new WorkbookFilterInventory(entityPlayer.inventory, x, y, z, guiID);
+	public ItemFilterContainer(int x, int y, int z, EntityPlayer entityPlayer, int guiID) {
+		filterInventory = new ItemFilterInventory(entityPlayer.inventory, x, y, z, guiID);
 		this.workbook = entityPlayer.inventory.getCurrentItem();
 		filterInventory.openInventory(entityPlayer);
 

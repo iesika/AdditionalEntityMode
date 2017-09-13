@@ -10,10 +10,10 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
-public class GuiWorkbookMessageHandler implements IMessageHandler<GuiWorkbookMessage, IMessage> {
+public class GuiItemFilterMessageHandler implements IMessageHandler<GuiItemFilterMessage, IMessage> {
 
 	@Override
-	public IMessage onMessage(GuiWorkbookMessage message, MessageContext ctx) {
+	public IMessage onMessage(GuiItemFilterMessage message, MessageContext ctx) {
 
 		ItemStack workbook = ctx.getServerHandler().playerEntity.inventory.getCurrentItem();
 		BlockPos pos = new BlockPos(message.x, message.y, message.z);

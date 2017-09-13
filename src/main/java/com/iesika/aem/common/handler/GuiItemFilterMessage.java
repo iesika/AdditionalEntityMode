@@ -3,7 +3,7 @@ package com.iesika.aem.common.handler;
 import io.netty.buffer.ByteBuf;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 
-public class GuiWorkbookMessage implements IMessage {
+public class GuiItemFilterMessage implements IMessage {
 
 	public boolean isImoprt;
 	public boolean isWhitelist;
@@ -13,9 +13,9 @@ public class GuiWorkbookMessage implements IMessage {
 	public int y;
 	public int z;
 
-	public GuiWorkbookMessage(){}
+	public GuiItemFilterMessage(){}
 
-	public GuiWorkbookMessage(boolean isImoprt,boolean isWhitelist, boolean ignoreNBT, int facing, int ax, int ay, int az) {
+	public GuiItemFilterMessage(boolean isImoprt,boolean isWhitelist, boolean ignoreNBT, int facing, int ax, int ay, int az) {
 		this.isImoprt = isImoprt;
 		this.isWhitelist = isWhitelist;
 		this.ignoreNBT = ignoreNBT;
