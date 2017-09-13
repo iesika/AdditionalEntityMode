@@ -29,11 +29,11 @@ public class WorkbookFilterInventory implements IInventory {
 
 	public int getInventorySizeFromGuiID(int guiID) {
 		switch (guiID) {
-		case GuiHandler.AEM_WORKBOOK_TIER0_GUI_ID:
+		case GuiHandler.AEM_ITEMFILTER_TIER0_GUI_ID:
 			return 1;
-		case GuiHandler.AEM_WORKBOOK_TIER1_GUI_ID:
+		case GuiHandler.AEM_ITEMFILTER_TIER1_GUI_ID:
 			return 5;
-		case GuiHandler.AEM_WORKBOOK_TIER2_GUI_ID:
+		case GuiHandler.AEM_ITEMFILTER_TIER2_GUI_ID:
 			return 9;
 		default:
 			Logger.info("incorrect guiID : WorkbookFilterInventory");

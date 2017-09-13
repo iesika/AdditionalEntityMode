@@ -46,17 +46,17 @@ public class Workbook extends Item {
 		regiterModels();
 	}
 
-	public int meta2GUIID(int meta) {
+	public int meta2itemFilterGUIID(int meta) {
 		switch (meta) {
 		case 0:
-			return GuiHandler.AEM_WORKBOOK_TIER0_GUI_ID;
+			return GuiHandler.AEM_ITEMFILTER_TIER0_GUI_ID;
 		case 1:
-			return GuiHandler.AEM_WORKBOOK_TIER1_GUI_ID;
+			return GuiHandler.AEM_ITEMFILTER_TIER1_GUI_ID;
 		case 2:
-			return GuiHandler.AEM_WORKBOOK_TIER2_GUI_ID;
+			return GuiHandler.AEM_ITEMFILTER_TIER2_GUI_ID;
 		default:
 			Logger.warn("Incorrect GUI ID");
-			return GuiHandler.AEM_WORKBOOK_TIER0_GUI_ID;
+			return GuiHandler.AEM_ITEMFILTER_TIER0_GUI_ID;
 		}
 	}
 
@@ -112,7 +112,7 @@ public class Workbook extends Item {
 			int current = getNumberOfItemIOPoint(stack);
 			int max = getMaxNunmberOfItemIOPoint(stack);
 			if (max > current){
-				playerIn.openGui(AdditionalEntityMode.INSTANCE, meta2GUIID(stack.getMetadata()), worldIn, pos.getX(), pos.getY(), pos.getZ());
+				playerIn.openGui(AdditionalEntityMode.INSTANCE, meta2itemFilterGUIID(stack.getMetadata()), worldIn, pos.getX(), pos.getY(), pos.getZ());
 				return EnumActionResult.SUCCESS;
 			}else{
 				if (!worldIn.isRemote){

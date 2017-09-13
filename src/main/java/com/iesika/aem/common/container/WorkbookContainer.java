@@ -21,11 +21,11 @@ public class WorkbookContainer extends Container {
 
 		for (int i = 0; i < 3; ++i) {
 			for (int j = 0; j < 3; ++j) {
-				if (guiID == GuiHandler.AEM_WORKBOOK_TIER2_GUI_ID){
+				if (guiID == GuiHandler.AEM_ITEMFILTER_TIER2_GUI_ID){
 					this.addSlotToContainer(new SlotWorkbook(filterInventory, j + i * 3, 62 + j * 18, 17 + i * 18));
-				}else if (guiID == GuiHandler.AEM_WORKBOOK_TIER1_GUI_ID && (i == 1 || j == 1) ){
+				}else if (guiID == GuiHandler.AEM_ITEMFILTER_TIER1_GUI_ID && (i == 1 || j == 1) ){
 					this.addSlotToContainer(new SlotWorkbook(filterInventory, j + i * 3, 62 + j * 18, 17 + i * 18));
-				}else if(guiID == GuiHandler.AEM_WORKBOOK_TIER0_GUI_ID && (i == 1 && j == 1)){
+				}else if(guiID == GuiHandler.AEM_ITEMFILTER_TIER0_GUI_ID && (i == 1 && j == 1)){
 					this.addSlotToContainer(new SlotWorkbook(filterInventory, j + i * 3, 62 + j * 18, 17 + i * 18));
 				}
 			}

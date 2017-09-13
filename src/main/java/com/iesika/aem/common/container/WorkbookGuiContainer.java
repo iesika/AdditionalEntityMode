@@ -47,13 +47,13 @@ public class WorkbookGuiContainer extends GuiContainer {
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
 		switch (this.GUIID) {
-		case GuiHandler.AEM_WORKBOOK_TIER0_GUI_ID:
+		case GuiHandler.AEM_ITEMFILTER_TIER0_GUI_ID:
 			this.mc.renderEngine.bindTexture(TEXTURE_TIER0);
 			break;
-		case GuiHandler.AEM_WORKBOOK_TIER1_GUI_ID:
+		case GuiHandler.AEM_ITEMFILTER_TIER1_GUI_ID:
 			this.mc.renderEngine.bindTexture(TEXTURE_TIER1);
 			break;
-		case GuiHandler.AEM_WORKBOOK_TIER2_GUI_ID:
+		case GuiHandler.AEM_ITEMFILTER_TIER2_GUI_ID:
 			this.mc.renderEngine.bindTexture(TEXTURE_TIER2);
 			break;
 		}
