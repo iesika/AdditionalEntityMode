@@ -39,6 +39,10 @@ public class WorkbookGuiContainer extends GuiContainer{
 	private EnumFacing facing;
 	private BlockPos pos;
 
+	private MaidTaskManager mtm;
+	//現在見ているページ, mtm.tasksのインデックス
+	private int viewPage = 0;
+
 	public WorkbookGuiContainer(int x, int y, int z, EntityPlayer entityPlayer, int GUIID) {
 		super(new WorkbookContainer(x, y, z, entityPlayer, GUIID));
 		this.entityPlayer = entityPlayer;
@@ -50,7 +54,22 @@ public class WorkbookGuiContainer extends GuiContainer{
 	protected void actionPerformed(GuiButton pushedButton) throws IOException {
 		super.actionPerformed(pushedButton);
 		Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0F));
+		//
+		int maxPage = mtm.getNumberOfItemIOtask() - 1;
 
+		if(pushedButton == prevButton){
+			viewPage--;
+			if (viewPage < 0){
+				viewPage = maxPage;
+			}
+		}else if (pushedButton == nextButton){
+			viewPage++;
+			if (viewPage > maxPage){
+				viewPage = 0;
+			}
+		}
+
+		//entityPlayer.worldObj.
 	}
 
 	@Override
@@ -72,16 +91,21 @@ public class WorkbookGuiContainer extends GuiContainer{
 	@Override
 	public void initGui() {
 		super.initGui();
-		this.buttonList.add(prevButton = new GuiSmallButton(0, guiLeft + 4, guiTop + 4, 10, 10, "<"));
-		this.buttonList.add(nextButton = new GuiSmallButton(1, guiLeft + 160, guiTop + 4, 10, 10, ">"));
 
 		this.buttonList.add(ioButton = new GuiButton(2, guiLeft + 3, guiTop + 56, 54, 20, I18n.format(isImport ? "aem.text.import" : "aem.text.export")));
 		this.buttonList.add(wbButton = new GuiButton(3, guiLeft + 3, guiTop + 81, 54, 20, I18n.format(isWhitelist ? "aem.text.whitelist" : "aem.text.blacklist")));
 		this.buttonList.add(nbtButton = new GuiButton(4, guiLeft + 118, guiTop + 56, 54, 20, I18n.format(ignoreNBT ? "aem.text.ignoreNBT" : "aem.text.matchNBT")));
 		//this.buttonList.add(facingButton = new GuiButton(5, guiLeft + 118, guiTop + 81, 54, 20, I18n.format(FacingUtil.getFacingString(facing))));
 
-		MaidTaskManager mtm = new MaidTaskManager(entityPlayer.inventory.getCurrentItem());
-		
+		//このGUIを開くときは確実にworkbookを持っているはず
+		mtm = new MaidTaskManager(entityPlayer.inventory.getCurrentItem());
+		if (mtm == null || mtm.tasks.size() == 0){
+			return;
+		}
+
+		this.buttonList.add(prevButton = new GuiSmallButton(0, guiLeft + 4, guiTop + 4, 10, 10, "<"));
+		this.buttonList.add(nextButton = new GuiSmallButton(1, guiLeft + 160, guiTop + 4, 10, 10, ">"));
+
 	}
 
 	@Override
@@ -89,5 +113,8 @@ public class WorkbookGuiContainer extends GuiContainer{
 		return false;
 	}
 
+	private void showDummyTileEntity(){
+		
+	}
 
 }

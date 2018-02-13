@@ -18,6 +18,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
@@ -137,6 +138,7 @@ public class Workbook extends Item {
 		return EnumActionResult.FAIL;
 	}
 
+
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		super.onItemRightClick(itemStackIn, worldIn, playerIn, hand);
@@ -144,8 +146,9 @@ public class Workbook extends Item {
 			return new ActionResult<ItemStack>(EnumActionResult.FAIL, itemStackIn);
 		}
 		if (itemStackIn.getTagCompound() != null) {
-			playerIn.openGui(AdditionalEntityMode.INSTANCE, meta2workbookGUIID(itemStackIn.getMetadata()), worldIn, 0, 0, 0);
-			//itemStackIn.setTagCompound(new NBTTagCompound());
+			//GUI未実装
+			//playerIn.openGui(AdditionalEntityMode.INSTANCE, meta2workbookGUIID(itemStackIn.getMetadata()), worldIn, 0, 0, 0);
+			itemStackIn.setTagCompound(new NBTTagCompound());
 		}
 		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
 	}
