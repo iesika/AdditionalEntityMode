@@ -124,7 +124,8 @@ public class Workbook extends Item {
 		if (tile != null && tile instanceof IInventory) {
 			int current = getNumberOfItemIOPoint(stack);
 			int max = getMaxNunmberOfItemIOPoint(stack);
-			if (max > current){
+			MaidTaskManager mtm = (new MaidTaskManager(stack));
+			if (max > current || (mtm != null && (mtm.getRegisteredTaskFromBlockPos(tile.getPos()) != null))){
 				playerIn.openGui(AdditionalEntityMode.INSTANCE, meta2itemFilterGUIID(stack.getMetadata()), worldIn, pos.getX(), pos.getY(), pos.getZ());
 				return EnumActionResult.SUCCESS;
 			}else{
