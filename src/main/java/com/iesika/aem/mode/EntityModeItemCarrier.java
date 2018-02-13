@@ -7,8 +7,8 @@ import com.iesika.aem.common.ai.EntityAIImport;
 import com.iesika.aem.common.tasks.MaidTaskManager;
 import com.iesika.aem.util.Logger;
 
-import net.blacklab.lmr.entity.EntityLittleMaid;
-import net.blacklab.lmr.entity.mode.EntityModeBase;
+import net.blacklab.lmr.entity.littlemaid.EntityLittleMaid;
+import net.blacklab.lmr.entity.littlemaid.mode.EntityModeBase;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAILookIdle;
@@ -72,13 +72,13 @@ public class EntityModeItemCarrier extends EntityModeBase {
 		//首の動き
 		ltasks[0].addTask(51, new EntityAIWatchClosest(owner, EntityLivingBase.class, 10F));
 		ltasks[0].addTask(52, new EntityAILookIdle(owner));
-		owner.addMaidMode(ltasks, ItemCarrierModeName, mmode_ItemCarrier);
+		owner.addMaidMode(ItemCarrierModeName, ltasks);
 	}
 
 	@Override
-	public boolean setMode(int pMode) {
+	public boolean setMode(String pMode) {
 		switch (pMode) {
-		case mmode_ItemCarrier:
+		case ItemCarrierModeName:
 			owner.setBloodsuck(false);
 			return shouldChangeToCarrierMode(owner.maidInventory.mainHandInventory[0]);
 		}

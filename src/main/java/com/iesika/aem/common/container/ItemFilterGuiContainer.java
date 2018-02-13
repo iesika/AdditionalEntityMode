@@ -22,9 +22,9 @@ import net.minecraft.util.math.BlockPos;
 
 public class ItemFilterGuiContainer extends GuiContainer {
 
-	private static final ResourceLocation TEXTURE_TIER0 = new ResourceLocation("aem", "textures/gui/workbook_tier0.png");
-	private static final ResourceLocation TEXTURE_TIER1 = new ResourceLocation("aem", "textures/gui/workbook_tier1.png");
-	private static final ResourceLocation TEXTURE_TIER2 = new ResourceLocation("aem", "textures/gui/workbook_tier2.png");
+	private static final ResourceLocation TEXTURE_TIER0 = new ResourceLocation("aem", "textures/gui/item_filter_tier0.png");
+	private static final ResourceLocation TEXTURE_TIER1 = new ResourceLocation("aem", "textures/gui/item_filter_tier1.png");
+	private static final ResourceLocation TEXTURE_TIER2 = new ResourceLocation("aem", "textures/gui/item_filter_tier2.png");
 	private EntityPlayer entityPlayer;
 	private GuiButton ioButton;
 	private GuiButton wbButton;

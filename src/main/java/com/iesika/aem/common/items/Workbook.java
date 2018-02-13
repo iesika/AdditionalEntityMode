@@ -18,7 +18,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
@@ -57,6 +56,20 @@ public class Workbook extends Item {
 		default:
 			Logger.warn("Incorrect GUI ID");
 			return GuiHandler.AEM_ITEMFILTER_TIER0_GUI_ID;
+		}
+	}
+
+	public int meta2workbookGUIID(int meta){
+		switch (meta) {
+		case 0:
+			return GuiHandler.AEM_WORKBOOK_TIER0_GUI_ID;
+		case 1:
+			return GuiHandler.AEM_WORKBOOK_TIER1_GUI_ID;
+		case 2:
+			return GuiHandler.AEM_WORKBOOK_TIER2_GUI_ID;
+		default:
+			Logger.warn("Incorrect GUI ID");
+			return GuiHandler.AEM_WORKBOOK_TIER0_GUI_ID;
 		}
 	}
 
@@ -130,7 +143,8 @@ public class Workbook extends Item {
 			return new ActionResult<ItemStack>(EnumActionResult.FAIL, itemStackIn);
 		}
 		if (itemStackIn.getTagCompound() != null) {
-			itemStackIn.setTagCompound(new NBTTagCompound());
+			playerIn.openGui(AdditionalEntityMode.INSTANCE, meta2workbookGUIID(itemStackIn.getMetadata()), worldIn, 0, 0, 0);
+			//itemStackIn.setTagCompound(new NBTTagCompound());
 		}
 		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
 	}

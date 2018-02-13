@@ -6,8 +6,8 @@ import com.iesika.aem.common.tasks.MaidTaskItemIO;
 import com.iesika.aem.mode.EntityModeItemCarrier;
 import com.iesika.aem.util.InventoryUtil;
 
-import net.blacklab.lmr.entity.EntityLittleMaid;
-import net.blacklab.lmr.entity.mode.EntityModeBase;
+import net.blacklab.lmr.entity.littlemaid.EntityLittleMaid;
+import net.blacklab.lmr.entity.littlemaid.mode.EntityModeBase;
 import net.blacklab.lmr.util.EnumSound;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.inventory.IInventory;

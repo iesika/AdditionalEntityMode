@@ -2,6 +2,8 @@ package com.iesika.aem.common.handler;
 
 import com.iesika.aem.common.container.ItemFilterContainer;
 import com.iesika.aem.common.container.ItemFilterGuiContainer;
+import com.iesika.aem.common.container.WorkbookContainer;
+import com.iesika.aem.common.container.WorkbookGuiContainer;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
@@ -23,6 +25,8 @@ public class GuiHandler implements IGuiHandler {
 	public Object getServerGuiElement(int guiID, EntityPlayer player, World world, int x, int y, int z) {
 		if (guiID == AEM_ITEMFILTER_TIER0_GUI_ID || guiID == AEM_ITEMFILTER_TIER1_GUI_ID || guiID == AEM_ITEMFILTER_TIER2_GUI_ID){
 			return new ItemFilterContainer(x, y, z, player, guiID);
+		} else if (guiID == AEM_WORKBOOK_TIER0_GUI_ID || guiID == AEM_WORKBOOK_TIER1_GUI_ID || guiID == AEM_WORKBOOK_TIER2_GUI_ID){
+			return new WorkbookContainer(x, y, z, player, guiID);
 		}
 		return null;
 	}
@@ -31,6 +35,8 @@ public class GuiHandler implements IGuiHandler {
 	public Object getClientGuiElement(int guiID, EntityPlayer player, World world, int x, int y, int z) {
 		if (guiID == AEM_ITEMFILTER_TIER0_GUI_ID || guiID == AEM_ITEMFILTER_TIER1_GUI_ID || guiID == AEM_ITEMFILTER_TIER2_GUI_ID){
 			return new ItemFilterGuiContainer(x, y, z, player, guiID);
+		}else if (guiID == AEM_WORKBOOK_TIER0_GUI_ID || guiID == AEM_WORKBOOK_TIER1_GUI_ID || guiID == AEM_WORKBOOK_TIER2_GUI_ID){
+			return new WorkbookGuiContainer(x, y, z, player, guiID);
 		}
 		return null;
 	}
