@@ -94,6 +94,7 @@ public class EntityAIExport extends EntityAIBase {
 					return;
 				}
 			}
+			owner.getNavigator().updatePath();
 		} else {
 			for (MaidTaskItemIO mtio : exporList) {
 				if (exportItemStack(mtio, true)) {
@@ -101,6 +102,7 @@ public class EntityAIExport extends EntityAIBase {
 					double y = (double) mtio.pos.getY() + 0.5d;
 					double z = (double) mtio.pos.getZ() + 0.5d;
 					boolean canReach = owner.getNavigator().tryMoveToXYZ(x, y, z, 1.0F);
+					owner.getLookHelper().setLookPosition(x, y, z, 10F, owner.getVerticalFaceSpeed());
 					if (canReach || owner.getDistance(x, y, z) < 1.5D) {
 						ptask = mtio;
 						break;
@@ -116,7 +118,7 @@ public class EntityAIExport extends EntityAIBase {
 
 	@Override
 	public boolean isInterruptible() {
-		return false;
+		return true;
 	}
 
 	@Override
