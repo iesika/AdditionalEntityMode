@@ -49,11 +49,11 @@ public class EntityModeItemCarrier extends EntityModeBase {
 					Logger.info("maid path finding range increased : " + pre + " -> " + now);
 				}
 				owner.setMaidMode(ItemCarrierModeName);
-				Logger.info("maid mode -> Carrier (use main hand)");
+				//Logger.info("maid mode -> Carrier (use main hand)");
 				return true;
 			}
 		}
-		Logger.info("maid path finding range set : " + owner.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).getBaseValue() + " -> " + 20);
+		//Logger.info("maid path finding range set : " + owner.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).getBaseValue() + " -> " + 20);
 		owner.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(20.0D);
 		return false;
 	}
@@ -85,7 +85,7 @@ public class EntityModeItemCarrier extends EntityModeBase {
 			return shouldChangeToCarrierMode(owner.maidInventory.mainHandInventory[0]);
 		}
 		//結局確定でfollow rangeをモドスことは出来ない．悲しみ
-		Logger.info("maid path finding range set : " + owner.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).getBaseValue() + " -> " + 20);
+		//Logger.info("maid path finding range set : " + owner.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).getBaseValue() + " -> " + 20);
 		owner.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(20.0D);
 		return false;
 	}
